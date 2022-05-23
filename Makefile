@@ -13,6 +13,10 @@ plan:
 		terraform init && \
 		aws-vault exec $(profile) -- terraform plan
 
+## Install pre-commit hooks
+pre-commit/install:
+	pre-commit install --install-hooks --allow-missing-config -t pre-commit
+
 ## Show available commands
 help:
 	@printf "Available targets:\n\n"
