@@ -12,6 +12,23 @@ terraform {
     }
   }
 }
+provider "aws" {
+  region = "us-west-2"
+}
+
+data "aws_ami" "amazon_linux2" {
+  most_recent = true
+  owners      = ["amazon"]
+
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
+  filter {
+    name   = "name"
+    values = ["amzn2-ami-kernel-5.10-*-gp2"]
+  }
+}
 
 module "network" {
   source  = "app.terraform.io/beantown/network/aws"
@@ -29,13 +46,10 @@ module "network" {
   region_code                     = "usw2"
 }
 
-provider "aws" {
-  region = "us-west-2"
-}
-
 module "control_plane" {
   source = "../.."
 
+  ami                     = data.aws_ami.amazon_linux2.id
   automated_user          = "jalbot"
   cilium_version          = "1.11.0"
   cluster_name            = "test-usw2"

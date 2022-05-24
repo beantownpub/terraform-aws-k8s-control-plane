@@ -4,8 +4,7 @@
 # 2022
 
 variable "ami" {
-  description = "Specify a specific ami ID"
-  default     = null
+  description = "AMI image ID"
 }
 
 variable "associate_public_ip_address" { default = false }

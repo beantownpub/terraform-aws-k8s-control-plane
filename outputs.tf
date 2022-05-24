@@ -7,3 +7,7 @@ output "instance" {
   description = ""
   value       = aws_instance.control_plane
 }
+
+output "private_ipv4" {
+  value = aws_instance.control_plane.private_ip
+}

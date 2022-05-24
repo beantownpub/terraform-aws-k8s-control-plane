@@ -3,22 +3,8 @@
 # +-+-+-+-+ +-+-+-+-+-+-+-+-+-+ +-+-+-+-+
 # 2022
 
-data "aws_ami" "amazon_linux2" {
-  most_recent = true
-  owners      = ["amazon"]
-
-  filter {
-    name   = "virtualization-type"
-    values = ["hvm"]
-  }
-  filter {
-    name = "name"
-    values = ["amzn2-ami-kernel-5.10-*-gp2"]
-  }
-}
-
 resource "aws_key_pair" "cluster_nodes" {
-  key_name   = "cluster-nodes"
+  key_name   = "${var.cluster_name}-control-plane"
   public_key = var.public_key
 }
 
@@ -40,7 +26,7 @@ data "template_file" "init" {
 }
 
 resource "aws_instance" "control_plane" {
-  ami                         = var.ami == null ? data.aws_ami.amazon_linux2.id : var.ami
+  ami                         = var.ami
   instance_type               = var.instance_type
   user_data                   = data.template_file.init.rendered
   security_groups             = var.security_groups
