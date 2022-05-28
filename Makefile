@@ -3,6 +3,8 @@ export SELF ?= $(MAKE)
 SHELL := /bin/bash
 MAKE_FILES = ${MAKE_PATH}/Makefile
 
+github_tag = $(shell git describe)
+
 ## Format Terraform code
 fmt:
 	terraform fmt --recursive
@@ -16,6 +18,10 @@ plan:
 ## Install pre-commit hooks
 pre-commit/install:
 	pre-commit install --install-hooks --allow-missing-config -t pre-commit
+
+## Create github release
+release:
+	gh release create v$(github_tag) -n $(notes)
 
 ## Show available commands
 help:
