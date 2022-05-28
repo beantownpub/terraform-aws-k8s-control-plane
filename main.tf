@@ -40,6 +40,7 @@ resource "aws_instance" "control_plane" {
     "kubernetes.io/cluster/${var.env}-${var.region_code}" = "owned"
   }
   metadata_options {
+    http_endpoint          = enabled
     instance_metadata_tags = "enabled"
   }
   root_block_device {
