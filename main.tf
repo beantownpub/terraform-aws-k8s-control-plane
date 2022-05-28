@@ -35,9 +35,9 @@ resource "aws_instance" "control_plane" {
   key_name                    = aws_key_pair.cluster_nodes.key_name
   subnet_id                   = var.subnet_id
   tags = {
-    "Name"                                                = "k8s-control-plane"
-    "Role"                                                = "control-plane"
-    "kubernetes.io/cluster/${var.env}-${var.region_code}" = "owned"
+    "Name"                                      = "k8s-control-plane"
+    "Role"                                      = "control-plane"
+    "kubernetes.io/cluster/${var.cluster_name}" = "owned"
   }
   metadata_options {
     http_endpoint          = "enabled"

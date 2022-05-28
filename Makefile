@@ -9,6 +9,11 @@ github_tag = $(shell git describe)
 fmt:
 	terraform fmt --recursive
 
+## Upgrade examples/complete test workspace
+upgrade:
+	cd examples/complete && \
+		terraform init -upgrade=true
+
 ## Run a test plan
 plan:
 	cd examples/complete && \

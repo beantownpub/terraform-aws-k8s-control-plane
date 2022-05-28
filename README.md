@@ -6,13 +6,13 @@ Terraform module for creating a Kubernetes control-plane node
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | 4.15.1 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | 4.16.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.15.1 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.16.0 |
 | <a name="provider_template"></a> [template](#provider\_template) | n/a |
 
 ## Modules
@@ -23,8 +23,8 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [aws_instance.control_plane](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/instance) | resource |
-| [aws_key_pair.cluster_nodes](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/key_pair) | resource |
+| [aws_instance.control_plane](https://registry.terraform.io/providers/hashicorp/aws/4.16.0/docs/resources/instance) | resource |
+| [aws_key_pair.cluster_nodes](https://registry.terraform.io/providers/hashicorp/aws/4.16.0/docs/resources/key_pair) | resource |
 | [template_file.init](https://registry.terraform.io/providers/hashicorp/template/latest/docs/data-sources/file) | data source |
 
 ## Inputs
